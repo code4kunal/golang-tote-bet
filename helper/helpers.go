@@ -21,7 +21,13 @@ import (
 */
 func ValidateResultString(str string) ( []string , error ) {
 	s := strings.Split(str, ":")
-	if len(s) < 5  {
+	for _, sval := range s{
+		 _, err:= strconv.Atoi(sval)
+		if err!= nil{
+			return nil, errors.New("Invalid Result String")
+		}
+	}
+	if len(s) < 5 {
 		return nil, errors.New("Invalid Result String")
 	}
 	return s , nil
